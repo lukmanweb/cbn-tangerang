@@ -260,19 +260,27 @@ img { max-width: 100%; display: block; height: auto; }
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 .nav-link {
     font-weight: 600;
     font-size: 0.88rem;
     color: var(--text-muted);
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 6px;
     transition: all .2s;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    flex-shrink: 0;
 }
 .nav-link:hover, .nav-link.active {
     color: var(--primary);
     background: var(--bg-alt);
+}
+
+.mobile-only-btn {
+    display: none !important;
 }
 
 .nav-actions {
@@ -1150,6 +1158,12 @@ input[type=range] {
         width: 100%; 
         text-align: center;
         border-bottom: 1px solid #F0F4F8;
+    }
+
+    .mobile-only-btn {
+        display: flex !important;
+        margin-top: 12px;
+        width: 100% !important;
     }
 
     /* Hero Section Mobile */
