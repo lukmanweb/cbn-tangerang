@@ -2,10 +2,10 @@
  * CBN Tangerang - Interactive Logic & WhatsApp Sales Generator
  */
 
-// Sales Marketing Configuration (Dapat disesuaikan)
+// Sales Marketing Configuration (Vemas - 085692992849)
 const SALES_CONFIG = {
-    whatsappNumber: "6285711146723", // Nomor WhatsApp Sales Marketing CBN Tangerang
-    salesName: "Sales Marketing CBN Tangerang",
+    whatsappNumber: "6285692992849", // Nomor WhatsApp Sales Vemas
+    salesName: "Vemas",
     area: "Tangerang & Sekitarnya"
 };
 
@@ -98,7 +98,9 @@ function filterProducts(category) {
     tabs.forEach(tab => tab.classList.remove('active'));
     
     // Set active tab
-    event.currentTarget.classList.add('active');
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
     
     const cards = document.querySelectorAll('.price-card');
     cards.forEach(card => {
@@ -130,26 +132,31 @@ function updateCalculator() {
     const devices = parseInt(rangeInput.value);
     deviceDisplay.innerHTML = `<strong>${devices} Perangkat Terhubung</strong>`;
     
-    let recName = "CBN Fiber Home 100";
-    let recSpeed = "Kecepatan Up to 100 Mbps (Simetris 1:1)";
-    let recPrice = "Rp 299.000 /bulan";
-    let recDesc = "Ideal untuk 1-5 perangkat, browsing cepat, dan streaming Full HD.";
+    let recName = "CBN Fiber 50";
+    let recSpeed = "Speed Up To 100 Mbps (Promo Boost) - Simetris 1:1";
+    let recPrice = "Rp 259.740 /bulan (Sudah PPN 11%)";
+    let recDesc = "Rekomendasi Terfavorit! Hemat & super cepat untuk 3-6 perangkat di rumah.";
 
     if (selectedActivity === 'business') {
-        recName = "CBN Enterprise Premier / DirectNet";
-        recSpeed = "Bandwidth Dedicated 1:1 & SLA 99.8%";
-        recPrice = "Hubungi Sales (Custom Price)";
-        recDesc = "Rekomendasi terbaik untuk operasional kantor, cafe, ruko, dan industri pabrik di Tangerang.";
+        recName = "CBN Fiber 150 / Enterprise Premier";
+        recSpeed = "Speed Up To 300 Mbps / Dedicated 1:1";
+        recPrice = "Rp 626.040 /bulan (Sudah PPN 11%)";
+        recDesc = "Performa maksimal untuk operasional kantor, toko online, ruko, & bisnis perkantoran.";
     } else if (selectedActivity === 'gaming' || devices > 12) {
-        recName = "CBN Fiber Pro 500";
-        recSpeed = "Kecepatan Up to 500 Mbps (Ultra Low Ping)";
-        recPrice = "Rp 799.000 /bulan";
-        recDesc = "Solusi maksimal bagi Gamers, Live Streamer 4K, & heavy downloader tanpa lag.";
-    } else if (devices >= 6 || selectedActivity === 'streaming') {
-        recName = "CBN Fiber Home 200";
-        recSpeed = "Kecepatan Up to 200 Mbps (Simetris 1:1)";
-        recPrice = "Rp 399.000 /bulan";
-        recDesc = "Paket terfavorit keluarga modern Tangerang. Bebas hambatan saat streaming 4K & WFH simultan.";
+        recName = "CBN Fiber 100";
+        recSpeed = "Speed Up To 200 Mbps (Promo Boost) - Low Latency";
+        recPrice = "Rp 481.740 /bulan (Sudah PPN 11%)";
+        recDesc = "Spesial untuk Heavy Gamers, Live Streamer, & download file besar tanpa nge-lag.";
+    } else if (devices >= 7 || selectedActivity === 'streaming') {
+        recName = "CBN Fiber 75";
+        recSpeed = "Speed Up To 150 Mbps (Promo Boost) - Simetris 1:1";
+        recPrice = "Rp 381.840 /bulan (Sudah PPN 11%)";
+        recDesc = "Koneksi keluarga besar streaming 4K Ultra HD & WFH simultan tanpa hambat.";
+    } else if (devices <= 2 && selectedActivity === 'basic') {
+        recName = "CBN Fiber 20";
+        recSpeed = "Speed Up To 20 Mbps - Simetris 1:1";
+        recPrice = "Rp 193.140 /bulan (Sudah PPN 11%)";
+        recDesc = "Paket paling ekonomis untuk penggunaan dasar 1-2 HP/Laptop.";
     }
 
     document.getElementById('recPackageName').innerText = recName;
@@ -158,72 +165,44 @@ function updateCalculator() {
     document.getElementById('recPackageDesc').innerText = recDesc;
 
     // Update WhatsApp link for recommendation button
-    const message = encodeURIComponent(
-        `Halo Sales CBN Tangerang,\nSaya menggunakan Kalkulator Paket di website:\n- Perangkat: ${devices} Devices\n- Aktivitas: ${selectedActivity}\n- Rekomendasi: ${recName} (${recPrice})\n\nMohon info ketersediaan jaringan & cara daftarnya!`
-    );
-    const waBtn = document.getElementById('recWhatsappBtn');
-    if (waBtn) {
-        waBtn.href = `https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${message}`;
+    const recBtn = document.getElementById('recCalcBtn');
+    if (recBtn) {
+        const text = encodeURIComponent(`Halo Mas Vemas (Sales CBN Tangerang), dari hasil kalkulator website saya ingin daftar paket ${recName} (${recPrice})`);
+        recBtn.href = `https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${text}`;
     }
 }
 
-// Hero Quick Lead Form Handler (Direct WA)
-function handleHeroFormSubmit(e) {
-    e.preventDefault();
-    const nama = document.getElementById('heroNama').value.trim();
-    const wa = document.getElementById('heroWA').value.trim();
-    const wilayah = document.getElementById('heroWilayah').value;
-    const alamat = document.getElementById('heroAlamat').value.trim();
+// Form Handlers
+function handleQuickFormSubmit(event) {
+    event.preventDefault();
+    const nama = document.getElementById('quickNama').value;
+    const wa = document.getElementById('quickWA').value;
+    const paket = document.getElementById('quickPaket').value;
+    const alamat = document.getElementById('quickAlamat').value;
 
-    if (!nama || !wa || !wilayah || !alamat) {
-        alert("Mohon lengkapi seluruh formulir pendaftaran!");
-        return;
-    }
+    const message = `Halo Mas Vemas (Sales CBN Tangerang), saya ingin pasang internet CBN Fiber:
+- Nama: ${nama}
+- No. WA: ${wa}
+- Pilihan Paket: ${paket}
+- Alamat: ${alamat}`;
 
-    const messageText = `Halo ${SALES_CONFIG.salesName},\nSaya ingin cek jangkauan jaringan CBN & klaim promo pemasangan:\n\n📌 *DATA PEMOHON:*` +
-        `\n• Nama: ${nama}` +
-        `\n• No. WA: ${wa}` +
-        `\n• Area/Kecamatan: ${wilayah}` +
-        `\n• Alamat Lengkap: ${alamat}` +
-        `\n\nMohon dicek tiang FAT terdekat & infokan promo yang berlaku. Terima kasih!`;
-
-    const waUrl = `https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${encodeURIComponent(messageText)}`;
-    window.open(waUrl, '_blank');
+    window.open(`https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// Coverage Form Handler (Direct WA)
-function handleCoverageFormSubmit(e) {
-    e.preventDefault();
-    const nama = document.getElementById('covNama').value.trim();
-    const wa = document.getElementById('covWA').value.trim();
+function handleCoverageFormSubmit(event) {
+    event.preventDefault();
+    const nama = document.getElementById('covNama').value;
+    const wa = document.getElementById('covWA').value;
     const kota = document.getElementById('covKota').value;
-    const kecamatan = document.getElementById('covKecamatan').value.trim();
-    const alamat = document.getElementById('covAlamat').value.trim();
+    const kec = document.getElementById('covKecamatan').value;
+    const alamat = document.getElementById('covAlamat').value;
 
-    const messageText = `Halo ${SALES_CONFIG.salesName},\nMohon bantu cek ketersediaan tiang FAT CBN di lokasi berikut:\n\n📍 *LOKASI PENGECEKAN:*` +
-        `\n• Nama: ${nama}` +
-        `\n• No. WA: ${wa}` +
-        `\n• Kota/Kab: ${kota}` +
-        `\n• Kecamatan: ${kecamatan}` +
-        `\n• Alamat / Cluster: ${alamat}` +
-        `\n\nSaya menunggu kabar ketersediaan port & jadwal survey teknisi!`;
+    const message = `Halo Mas Vemas (Sales CBN Tangerang), tolong cek ketersediaan jaringan / Tiang FAT CBN di lokasi saya:
+- Nama Pemohon: ${nama}
+- No. WA: ${wa}
+- Kota/Kab: ${kota}
+- Kecamatan: ${kec}
+- Alamat Lengkap: ${alamat}`;
 
-    const waUrl = `https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${encodeURIComponent(messageText)}`;
-    window.open(waUrl, '_blank');
-}
-
-// FAQ Accordion Toggle
-function toggleFaq(buttonElement) {
-    const faqItem = buttonElement.parentElement;
-    const isActive = faqItem.classList.contains('active');
-
-    // Close all FAQs
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-    });
-
-    // If it wasn't active, open it
-    if (!isActive) {
-        faqItem.classList.add('active');
-    }
+    window.open(`https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
