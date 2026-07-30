@@ -132,29 +132,29 @@ function updateCalculator() {
     const devices = parseInt(rangeInput.value);
     deviceDisplay.innerHTML = `<strong>${devices} Perangkat Terhubung</strong>`;
     
-    let recName = "CBN Fiber 50";
-    let recSpeed = "Speed Up To 100 Mbps (Promo Boost) - Simetris 1:1";
+    let recName = "Fiber 150";
+    let recSpeed = "Speed Up To 300Mbps - Simetris 1:1";
     let recPrice = "Rp 259.740 /bulan (Sudah PPN 11%)";
-    let recDesc = "Rekomendasi Terfavorit! Hemat & super cepat untuk 3-6 perangkat di rumah.";
+    let recDesc = "Rekomendasi Terfavorit! Hemat & super cepat Up To 300Mbps untuk keluarga & WFH.";
 
     if (selectedActivity === 'business') {
-        recName = "CBN Fiber 150 / Enterprise Premier";
-        recSpeed = "Speed Up To 300 Mbps / Dedicated 1:1";
-        recPrice = "Rp 626.040 /bulan (Sudah PPN 11%)";
+        recName = "Fiber 300";
+        recSpeed = "Speed Up To 500Mbps - Simetris 1:1";
+        recPrice = "Rp 481.740 /bulan (Sudah PPN 11%)";
         recDesc = "Performa maksimal untuk operasional kantor, toko online, ruko, & bisnis perkantoran.";
     } else if (selectedActivity === 'gaming' || devices > 12) {
-        recName = "CBN Fiber 100";
-        recSpeed = "Speed Up To 200 Mbps (Promo Boost) - Low Latency";
-        recPrice = "Rp 481.740 /bulan (Sudah PPN 11%)";
+        recName = "Fiber 200";
+        recSpeed = "Speed Up To 400Mbps - Ultra Low Latency";
+        recPrice = "Rp 381.840 /bulan (Sudah PPN 11%)";
         recDesc = "Spesial untuk Heavy Gamers, Live Streamer, & download file besar tanpa nge-lag.";
     } else if (devices >= 7 || selectedActivity === 'streaming') {
-        recName = "CBN Fiber 75";
-        recSpeed = "Speed Up To 150 Mbps (Promo Boost) - Simetris 1:1";
-        recPrice = "Rp 381.840 /bulan (Sudah PPN 11%)";
+        recName = "Fiber 100";
+        recSpeed = "Speed Up To 200Mbps - Simetris 1:1";
+        recPrice = "Rp 226.440 /bulan (Sudah PPN 11%)";
         recDesc = "Koneksi keluarga besar streaming 4K Ultra HD & WFH simultan tanpa hambat.";
     } else if (devices <= 2 && selectedActivity === 'basic') {
-        recName = "CBN Fiber 20";
-        recSpeed = "Speed Up To 20 Mbps - Simetris 1:1";
+        recName = "Fiber 20";
+        recSpeed = "Speed Up To 40Mbps - Simetris 1:1";
         recPrice = "Rp 193.140 /bulan (Sudah PPN 11%)";
         recDesc = "Paket paling ekonomis untuk penggunaan dasar 1-2 HP/Laptop.";
     }
