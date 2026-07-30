@@ -206,3 +206,25 @@ function handleCoverageFormSubmit(event) {
 
     window.open(`https://wa.me/${SALES_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
+
+// FAQ Accordion Toggle Function
+function toggleFaq(button) {
+    const faqItem = button.closest('.faq-item');
+    if (!faqItem) return;
+    
+    const isActive = faqItem.classList.contains('active');
+    
+    // Close other open FAQ items for clean accordion behavior
+    document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+        }
+    });
+    
+    // Toggle clicked FAQ item
+    if (isActive) {
+        faqItem.classList.remove('active');
+    } else {
+        faqItem.classList.add('active');
+    }
+}
