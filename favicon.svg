@@ -1,4 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="96" fill="#0055E5"/>
-  <text x="256" y="325" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="210" font-weight="900" fill="#FFFFFF" letter-spacing="-4">CBN</text>
+  <rect width="512" height="512" rx="100" fill="#FFFFFF"/>
+  <g transform="translate(40, 20)">
+    <!-- CBN Circle Dot -->
+    <circle cx="120" cy="110" r="32" fill="#3B62B5"/>
+    <!-- CBN Fluid Curve Body -->
+    <path d="M 175 135 C 240 135 285 185 275 250 C 265 310 215 365 160 365 C 105 365 75 310 90 240 C 105 170 175 135 175 135 Z" fill="#3B62B5"/>
+    <!-- Inner Darker Layer Shadow -->
+    <path d="M 180 260 C 180 320 230 365 290 355 C 330 348 360 315 360 280 C 360 250 330 235 300 255 C 260 280 200 270 180 260 Z" fill="#2E4A8E"/>
+    <!-- Outer Tail -->
+    <path d="M 190 270 C 230 350 310 375 365 330 C 395 305 390 270 360 270 C 335 270 315 285 280 310 C 235 340 190 300 190 270 Z" fill="#3B62B5"/>
+  </g>
+  <!-- Base Shadow -->
+  <ellipse cx="256" cy="445" rx="45" ry="8" fill="#B0B0B0" opacity="0.5"/>
 </svg>
